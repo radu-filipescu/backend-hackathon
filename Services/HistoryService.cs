@@ -1,4 +1,5 @@
-﻿using backend.Database;
+﻿using backend.Configs;
+using backend.Database;
 using backend.DTOs;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace backend.Services
     public class HistoryService : IHistoryService
     {
         private readonly AppDBContext _context;
+        private UserActionsTable ScoreMap = new UserActionsTable();
 
         public HistoryService(AppDBContext context)
         {
@@ -26,7 +28,25 @@ namespace backend.Services
         {
             _context.Add(action);
 
-            _context.SaveChanges();
+            if (action.actionId < 7)
+            {
+                var user = _context.Users.FirstOrDefault(user => user.Id == action.UserId);
+
+                if (user.Score == null)
+                    user.Score = "0";
+                user.Score = (int.Parse(user.Score) + ScoreMap.actionIdScoreMappings[action.actionId]).ToString();
+
+                var company = _context.Companies.FirstOrDefault(company => company.Id == int.Parse(user.CompanyId));
+
+                company.Score = company.Score + ScoreMap.actionIdScoreMappings[action.actionId];
+
+                _context.SaveChanges();
+            }
+            else {
+                var company = _context.Companies.FirstOrDefault(company => company.Id == action.UserId);
+                company.Score = company.Score + ScoreMap.actionIdScoreMappings[action.actionId];
+            }
+            
         }
     }
 }
