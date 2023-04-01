@@ -12,6 +12,6 @@ namespace PlanetPals___backend.DTOs
         public string Email { get; set; }
         public string Password { get; set; }
         public int Score { get; set; }
-        public List<bool> BusinessAchievements { get; set; }
+        public string BusinessAchievements { get; set; }
     }
 }
