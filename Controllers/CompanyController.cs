@@ -38,7 +38,7 @@ namespace backend.Controllers
         [HttpPost]
         public void Post([FromBody] CompanyDto company)
         {
-            _companyService.AddCompany(company)
+            _companyService.AddCompany(company);
         }
 
         // PUT api/<CompanyController>/5

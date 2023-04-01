@@ -39,7 +39,7 @@ namespace backend.Controllers
         [HttpPost]
         public void Post([FromBody] UserDto user )
         {
-            _userService.AddUser(user)
+            _userService.AddUser(user);
         }
 
         // PUT api/<UsersController>/5
