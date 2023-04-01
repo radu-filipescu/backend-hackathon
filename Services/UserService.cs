@@ -16,7 +16,7 @@ namespace backend.Services
             _context = context;
         }
 
-        public List<UserDto> ViewUsers()
+        public List<UserDto> GetAllUsers()
         {
             var users = _context.Users.Select(user => user).ToList();
 
