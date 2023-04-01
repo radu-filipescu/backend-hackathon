@@ -40,13 +40,12 @@ namespace backend.Services
 
                 company.Score = company.Score + ScoreMap.actionIdScoreMappings[action.actionId];
 
-                _context.SaveChanges();
             }
             else {
                 var company = _context.Companies.FirstOrDefault(company => company.Id == action.UserId);
                 company.Score = company.Score + ScoreMap.actionIdScoreMappings[action.actionId];
             }
-            
+            _context.SaveChanges();
         }
     }
 }

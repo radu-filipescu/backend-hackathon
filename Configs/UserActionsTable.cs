@@ -22,6 +22,14 @@ namespace backend.Configs
             actionIdScoreMappings.Add(5, 300);
             // donating
             actionIdScoreMappings.Add(6, 200);
+
+            actionIdScoreMappings.Add(7, 1000);
+            // solar panels
+            actionIdScoreMappings.Add(8, 5000);
+            // charging stations
+            actionIdScoreMappings.Add(9, 2500);
+            // green office
+            actionIdScoreMappings.Add(10, 1500);
         }
     }
 }
