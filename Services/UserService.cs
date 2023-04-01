@@ -43,7 +43,7 @@ namespace backend.Services
             string idString = Convert.ToString(id);
             var result = _context.Users.Where(user => user.CompanyId == idString).Select(user => user).ToList();
 
-            return result.OrderBy(o => Int32.Parse(o.Score)).ToList();
+            return result.OrderBy(o => -Int32.Parse(o.Score)).ToList();
         }
 
         public void DeleteUser(int id)
