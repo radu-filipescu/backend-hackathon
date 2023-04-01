@@ -41,5 +41,11 @@ namespace backend.Controllers
         {
             _companyService.AddCompany(company);
         }
+
+        [HttpPut]
+        public void EditCompanyAchievments([FromBody] int companyId, string newAchivments)
+        {
+            _companyService.EditCompanyAchivments(companyId, newAchivments);
+        }
     }
 }

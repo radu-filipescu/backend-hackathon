@@ -36,5 +36,14 @@ namespace backend.Services
 
             _context.SaveChanges();
         }
+
+        public void EditCompanyAchivments(int companyId, string newAchivements)
+        {
+            var result = _context.Companies.FirstOrDefault(company => company.Id == companyId);
+
+            result.BusinessAchievements = newAchivements;
+
+            _context.SaveChanges();
+        }
     }
 }

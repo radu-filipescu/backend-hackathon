@@ -12,5 +12,7 @@ namespace backend.Services
         public CompanyDto GetCompanyById( int id );
 
         public void AddCompany(CompanyDto company);
+
+        public void EditCompanyAchivments(int companyId, string newAchivements);
     }
 }
