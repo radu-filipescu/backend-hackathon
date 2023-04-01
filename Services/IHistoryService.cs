@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace backend.Services
 {
-    interface IHistoryService
+    public interface IHistoryService
     {
         public List<HistoryDto> GetAll();
 

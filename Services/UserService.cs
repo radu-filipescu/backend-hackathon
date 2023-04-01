@@ -23,14 +23,18 @@ namespace backend.Services
             return users;
         }
 
-        public UserDto ViewUserById(int id)
+        public UserDto GetUserById(int id)
         {
+            var result = _context.Users.FirstOrDefault(user => user.Id == id);
 
+            return result;
         }
 
         public void AddUser(UserDto user)
         {
+            _context.Users.Add(user);
 
+            _context.SaveChanges();
         }
     }
 }

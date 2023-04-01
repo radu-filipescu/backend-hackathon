@@ -20,18 +20,19 @@ namespace backend.Controllers
         {
             _companyService = companyService;
         }
+
         // GET: api/<CompanyController>
         [HttpGet]
         public IEnumerable<CompanyDto> GetAllCompanies()
         {
-            return _companyService.ViewCompanies();
+            return _companyService.GetCompanies();
         }
 
         // GET api/<CompanyController>/5
         [HttpGet("{id}")]
         public CompanyDto Get(int id)
         {
-            return _companyService.ViewCompanyById(id);
+            return _companyService.GetCompanyById(id);
         }
 
         // POST api/<CompanyController>
@@ -39,18 +40,6 @@ namespace backend.Controllers
         public void Post([FromBody] CompanyDto company)
         {
             _companyService.AddCompany(company);
-        }
-
-        // PUT api/<CompanyController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<CompanyController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

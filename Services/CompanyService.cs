@@ -16,21 +16,25 @@ namespace backend.Services
             _context = context;
         }
 
-        public List<UserDto> ViewCompanies()
+        public List<CompanyDto> GetCompanies()
         {
-            var users = _context.Companies.Select(user => user).ToList();
+            var companies = _context.Companies.Select(user => user).ToList();
 
-            return users;
+            return companies;
         }
 
-        public UserDto ViewCompanyById(int id)
+        public CompanyDto GetCompanyById(int id)
         {
+            var result = _context.Companies.FirstOrDefault(company => company.Id == id);
 
+            return result;
         }
 
-        public void AddCompany(UserDto user)
+        public void AddCompany(CompanyDto company)
         {
+            _context.Companies.Add(company);
 
+            _context.SaveChanges();
         }
     }
 }

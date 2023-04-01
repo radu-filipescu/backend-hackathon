@@ -8,8 +8,8 @@ namespace backend.Services
 {
     public interface ICompanyService
     {
-        public List<CompanyDto> ViewCompanies();
-        public CompanyDto ViewCompanyById( int id );
+        public List<CompanyDto> GetCompanies();
+        public CompanyDto GetCompanyById( int id );
 
         public void AddCompany(CompanyDto company);
     }

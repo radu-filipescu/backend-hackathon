@@ -32,7 +32,7 @@ namespace backend.Controllers
         [HttpGet("{id}")]
         public UserDto Get(int id)
         {
-            return _userService.ViewUserById( id );
+            return _userService.GetUserById( id );
         }
 
         // POST api/<UsersController>
@@ -40,18 +40,6 @@ namespace backend.Controllers
         public void Post([FromBody] UserDto user )
         {
             _userService.AddUser(user);
-        }
-
-        // PUT api/<UsersController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<UsersController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

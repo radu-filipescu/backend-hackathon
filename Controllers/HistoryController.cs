@@ -16,6 +16,11 @@ namespace backend.Controllers
     {
         private readonly IHistoryService _historyService;
 
+        public HistoryController(IHistoryService historyService)
+        {
+            _historyService = historyService;
+        }
+
         // GET: api/<HistoryController>
         [HttpGet]
         public List<HistoryDto> GetAll()
@@ -30,18 +35,6 @@ namespace backend.Controllers
         public void Post([FromBody] HistoryDto action)
         {
             _historyService.HandleAction(action);
-        }
-
-        // PUT api/<HistoryController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<HistoryController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

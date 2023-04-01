@@ -8,9 +8,9 @@ namespace backend.Services
 {
     public interface IUserService
     {
-        public List<UserDto> ViewUsers();
+        public List<UserDto> GetAllUsers();
 
-        public UserDto ViewUserById(int id);
+        public UserDto GetUserById(int id);
 
         public void AddUser(UserDto user);
     }
