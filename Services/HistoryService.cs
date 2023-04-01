@@ -44,9 +44,9 @@ namespace backend.Services
             return result.OrderByDescending( action => action.Date ).ToList();
         }
 
-        public void HandleAction(HistoryDto action)
+        public HistoryDto HandleAction(HistoryDto action)
         {
-            _context.Add(action);
+            var result = _context.Add(action);
 
             if (action.actionId < 7)
             {
@@ -66,6 +66,8 @@ namespace backend.Services
                 company.Score = company.Score + ScoreMap.actionIdScoreMappings[action.actionId];
             }
             _context.SaveChanges();
+
+            return result.Entity;
         }
     }
 }

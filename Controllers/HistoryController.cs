@@ -44,9 +44,11 @@ namespace backend.Controllers
         }
         // POST api/<HistoryController>
         [HttpPost]
-        public void Post([FromBody] HistoryDto action)
+        public HistoryDto Post([FromBody] HistoryDto action)
         {
-            _historyService.HandleAction(action);
+            var result = _historyService.HandleAction(action);
+
+            return result;
         }
     }
 }

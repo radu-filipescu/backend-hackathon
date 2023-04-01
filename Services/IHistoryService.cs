@@ -14,6 +14,6 @@ namespace backend.Services
 
         public List<HistoryDto> GetHistoryByCompanyId(int id);
 
-        public void HandleAction(HistoryDto action);
+        public HistoryDto HandleAction(HistoryDto action);
     }
 }
