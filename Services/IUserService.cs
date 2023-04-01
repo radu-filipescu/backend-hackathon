@@ -1,4 +1,5 @@
-﻿using PlanetPals___backend.DTOs;
+﻿using backend.DTOs;
+using PlanetPals___backend.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,7 @@ namespace backend.Services
         public UserDto GetUserById(int id);
 
         public void AddUser(UserDto user);
+
+        public string GetUserRights(LoginDTO loginInfo);
     }
 }
