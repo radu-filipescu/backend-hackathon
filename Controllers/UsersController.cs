@@ -35,6 +35,12 @@ namespace backend.Controllers
             return _userService.GetUserById( id );
         }
 
+        [HttpGet("GetUsersByCompanyId/{id}")]
+        public IEnumerable<UserDto> GetUsersByCompanyId(int id)
+        {
+            return _userService.GetUsersByCompanyIdSorted(id);
+        }
+
         // POST api/<UsersController>
         [HttpPost]
         public void Post([FromBody] UserDto user )

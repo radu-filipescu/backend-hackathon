@@ -14,5 +14,7 @@ namespace backend.Services
         public void AddCompany(CompanyDto company);
 
         public void EditCompanyAchivments(int companyId, string newAchivements);
+
+        public List<CompanyDto> GetCompaniesSorted();
     }
 }

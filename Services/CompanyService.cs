@@ -30,6 +30,13 @@ namespace backend.Services
             return result;
         }
 
+        public List<CompanyDto> GetCompaniesSorted()
+        {
+            var companies = _context.Companies.Select(user => user).ToList();
+
+            return companies.OrderBy(o => -(o.Score)).ToList();
+        }
+
         public void AddCompany(CompanyDto company)
         {
             _context.Companies.Add(company);

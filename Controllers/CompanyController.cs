@@ -35,6 +35,12 @@ namespace backend.Controllers
             return _companyService.GetCompanyById(id);
         }
 
+        [HttpGet("GetAllCompaniesSorted")]
+        public IEnumerable<CompanyDto> GetAllCompaniesSorted()
+        {
+            return _companyService.GetCompaniesSorted();
+        }
+
         // POST api/<CompanyController>
         [HttpPost]
         public void Post([FromBody] CompanyDto company)
