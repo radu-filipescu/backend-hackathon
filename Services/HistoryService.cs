@@ -24,13 +24,6 @@ namespace backend.Services
             return result;
         }
 
-        public HistoryDto GetHistoryById(int id)
-        {
-            var result = _context.Actions.FirstOrDefault(action => action.actionId == id);
-
-            return result;
-        }
-
         public void HandleAction(HistoryDto action)
         {
             _context.Add(action);

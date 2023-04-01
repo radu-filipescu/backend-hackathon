@@ -10,8 +10,6 @@ namespace backend.Services
     {
         public List<HistoryDto> GetAll();
 
-        public HistoryDto GetHistoryById(int id);
-
         public void HandleAction(HistoryDto action);
     }
 }
