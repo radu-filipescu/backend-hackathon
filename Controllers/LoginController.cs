@@ -27,7 +27,7 @@ namespace backend.Controllers
 
         // GET: api/<LoginController>
         [HttpGet]
-        public string GetUserStatus()
+        public SingleStringResponse GetUserStatus()
         {
             if (!System.IO.File.Exists(loginPath))
             {
@@ -48,20 +48,26 @@ namespace backend.Controllers
                 string s = "";
                 while ((s = sr.ReadLine()) != null)
                 {
-                    return s;
+                    var result = new SingleStringResponse();
+
+                    result.Value = s;
+                    return result;
                 }
             }
 
-            return "not logged in";
+
+            return new SingleStringResponse("not logged in");
         }
 
         // POST api/<LoginController>
         [HttpPost]
-        public string Post([FromBody] LoginDTO loginInfo)
+        public SingleStringResponse Post([FromBody] LoginDTO loginInfo)
         {
-            string result = _userService.GetUserRights(loginInfo);
+            var result = new SingleStringResponse();
+            
+            result.Value = _userService.GetUserRights(loginInfo);
 
-            System.IO.File.WriteAllText(loginPath, result);
+            System.IO.File.WriteAllText(loginPath, result.Value);
 
             return result;
         }
