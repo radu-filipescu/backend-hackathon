@@ -8,6 +8,6 @@ namespace backend.Services
 {
     public interface IUserService
     {
-        public List<UserDto> ViewUsers();
+        public List<UserDto> GetAllUsers();
     }
 }

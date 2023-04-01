@@ -25,7 +25,7 @@ namespace backend.Controllers
         [HttpGet]
         public IEnumerable<UserDto> GetAllUsers()
         {
-            return _userService.ViewUsers();
+            return _userService.GetAllUsers();
         }
 
         // GET api/<UsersController>/5
