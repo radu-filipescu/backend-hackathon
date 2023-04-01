@@ -17,6 +17,8 @@ namespace backend.Services
 
         public string GetUserRights(LoginDTO loginInfo);
 
+        public List<UserDto> GetUsersByCompanyIdSorted(int id);
+
         public void DeleteUser(int id);
     }
 }
