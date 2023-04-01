@@ -41,5 +41,12 @@ namespace backend.Controllers
         {
             _userService.AddUser(user);
         }
+
+        // DELETE api/<UsersController>
+        [HttpDelete("{id}")]
+        public void PostDelete(int id)
+        {
+            _userService.DeleteUser(id);
+        }
     }
 }

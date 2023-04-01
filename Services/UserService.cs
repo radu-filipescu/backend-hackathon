@@ -38,6 +38,14 @@ namespace backend.Services
             _context.SaveChanges();
         }
 
+        public void DeleteUser(int id)
+        {
+            var userDto = GetUserById(id);
+            _context.Users.Remove(userDto);
+
+            _context.SaveChanges();
+        }
+
         public string GetUserRights(LoginDTO loginInfo)
         {
             var result = _context.Users.FirstOrDefault(user => user.Email == loginInfo.Email);

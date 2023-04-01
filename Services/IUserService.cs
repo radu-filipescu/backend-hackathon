@@ -16,5 +16,7 @@ namespace backend.Services
         public void AddUser(UserDto user);
 
         public string GetUserRights(LoginDTO loginInfo);
+
+        public void DeleteUser(int id);
     }
 }
