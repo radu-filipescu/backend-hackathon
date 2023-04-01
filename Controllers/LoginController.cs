@@ -35,7 +35,7 @@ namespace backend.Controllers
                 using (FileStream fs = System.IO.File.Create(loginPath))
                 {
                     Byte[] info =
-                        new UTF8Encoding(true).GetBytes("not logged");
+                        new UTF8Encoding(true).GetBytes("not logged in");
 
                     // Add some information to the file.
                     fs.Write(info, 0, info.Length);
