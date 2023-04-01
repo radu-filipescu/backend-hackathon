@@ -62,7 +62,7 @@ namespace backend.Services
             {
                 if (result.Password == loginInfo.Password)
                 {
-                    return "normal user";
+                    return "normal user " + result.Id;
                 }
                 else
                     return "not logged in";
@@ -75,7 +75,7 @@ namespace backend.Services
                 {
                     if (result2.Password == loginInfo.Password)
                     {
-                        return "company admin";
+                        return "company admin " + result.Id;
                     }
                     else
                         return "not logged in";
