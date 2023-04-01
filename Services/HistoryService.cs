@@ -1,6 +1,7 @@
 ﻿using backend.Configs;
 using backend.Database;
 using backend.DTOs;
+using PlanetPals___backend.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,25 @@ namespace backend.Services
             var result = _context.Actions.Select(action => action).ToList();
 
             return result;
+        }
+
+        public HistoryDto GetHistoryById(int id)
+        {
+            var result = _context.Actions.FirstOrDefault(action => action.actionId == id);
+
+            return result;
+        }
+
+        public List<HistoryDto> GetHistoryByCompanyId( int id)
+        {
+            var users = _context.Users.Where(user => user.CompanyId == id.ToString()).Select(user => user).ToList();
+            List<HistoryDto> result = new List<HistoryDto>();
+            for (int i = 0; i < users.Count; i = i + 1)
+            {
+                var user_id = users[i].Id;
+                result.AddRange(_context.Actions.Where(action => action.UserId == user_id).Select(action => action).ToList() );
+            }
+            return result.OrderByDescending( action => action.Date ).ToList();
         }
 
         public void HandleAction(HistoryDto action)

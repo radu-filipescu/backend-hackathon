@@ -30,6 +30,18 @@ namespace backend.Controllers
             return result;
         }
 
+        [HttpGet("{id}")]
+        public HistoryDto Get(int id)
+        {
+            return _historyService.GetHistoryById(id);
+        }
+
+        [HttpGet("GetHistoryByCompanyId/{id}")]
+
+        public List<HistoryDto> GetHistoryByCompanyId( int id)
+        {
+            return _historyService.GetHistoryByCompanyId(id);
+        }
         // POST api/<HistoryController>
         [HttpPost]
         public void Post([FromBody] HistoryDto action)
