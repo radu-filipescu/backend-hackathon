@@ -31,7 +31,7 @@ namespace backend
         {
             services.AddCors();
             services.AddControllers();
-            services.AddDbContext<AppDBContext>(options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            var dbContext = services.AddDbContext<AppDBContext>(options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddSwaggerGen(c =>
             {
@@ -69,6 +69,12 @@ namespace backend
             {
                 endpoints.MapControllers();
             });
+
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                var dbContext = scope.ServiceProvider.GetRequiredService<AppDBContext>();
+                dbContext.Database.Migrate();
+            }
         }
     }
 }

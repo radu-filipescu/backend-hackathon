@@ -44,7 +44,7 @@ namespace backend.Database
                     Id = 1,
                     Email = "andrei@cercopitechs.com",
                     Password = "parola123",
-                    CompanyId = "123",
+                    CompanyId = "1",
                     Achievements = "000000"
                 });
             });
