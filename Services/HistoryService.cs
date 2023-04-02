@@ -56,6 +56,8 @@ namespace backend.Services
         {
             var result = _context.Add(action);
 
+            
+
             if (action.actionId < 7)
             {
                 var user = _context.Users.FirstOrDefault(user => user.Id == action.UserId);
@@ -73,6 +75,12 @@ namespace backend.Services
                 var company = _context.Companies.FirstOrDefault(company => company.Id == action.UserId);
                 company.Score = company.Score + ScoreMap.actionIdScoreMappings[action.actionId];
             }
+
+            _context.SaveChanges();
+
+            var post = _context.Actions.FirstOrDefault(post => post.Id == result.Entity.Id);
+            post.PhotoPath = post.Id.ToString();
+
             _context.SaveChanges();
 
             return result.Entity;
