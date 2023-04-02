@@ -50,5 +50,11 @@ namespace backend.Controllers
 
             return result;
         }
+
+        [HttpDelete("{id}")]
+        public void PostDelete(int id)
+        {
+            _historyService.DeleteHistory(id);
+        }
     }
 }

@@ -27,7 +27,7 @@ namespace backend.Services
 
         public HistoryDto GetHistoryById(int id)
         {
-            var result = _context.Actions.FirstOrDefault(action => action.actionId == id);
+            var result = _context.Actions.FirstOrDefault(action => action.Id == id);
 
             return result;
         }
@@ -42,6 +42,14 @@ namespace backend.Services
                 result.AddRange(_context.Actions.Where(action => action.UserId == user_id).Select(action => action).ToList() );
             }
             return result.OrderByDescending( action => action.Date ).ToList();
+        }
+
+        public void DeleteHistory(int id)
+        {
+            var historyDto = GetHistoryById(id);
+            if( historyDto != null)_context.Actions.Remove(historyDto);
+
+            _context.SaveChanges();
         }
 
         public HistoryDto HandleAction(HistoryDto action)
